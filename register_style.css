@@ -1,0 +1,93 @@
+header{
+    background-color: #f2f4f7;
+    padding: 10px;
+    /* width: 100%;
+    z-index: 9999;
+    position: fixed;
+    top:0; */
+  }
+  
+  body{
+    background-image: url('images/library_bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* padding-top: 60px; */
+  }
+
+  .alert{
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .alert alert-success{
+    color: white;
+    background-color: #42f554;
+  }
+  
+  .alert alert-danger{
+    color: white;
+    background-color: red;
+  }
+
+  .container {
+    position: absolute;
+    left: 50%;                                                                                                                                                                                                                                                  
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #f2f4f7d5;
+    width: 50%;
+    text-align: center;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 120px;
+  }
+
+  input[type=text]{
+    border: solid #0064fa;
+    border-width: 1px;
+    padding: 10px;
+    border-radius: 25px;
+    width: 350px;
+  }
+  
+  input[type=email]{
+    border: solid #0064fa;
+    border-width: 1px;
+    padding: 10px;
+    border-radius: 25px;
+    width: 350px;
+  }
+  
+  input[type=password]{
+    border: solid #0064fa;
+    border-width: 1px;
+    padding: 10px;
+    border-radius: 25px;
+    width: 350px;
+  }
+  
+  input[type=submit]{
+    width: 350px;
+    border-radius: 25px;
+    border-style: none;
+    background-color: #0064fa;
+    padding: 10px;
+    color: white;
+  }
+  
+  input[type=submit]:hover{
+    background-color:#3573f0;
+  }
+  
+  .log_link{
+    text-decoration: none;
+    color: #0064fa;
+  }
+  
+  .log_link:hover{
+    color: red;
+  }

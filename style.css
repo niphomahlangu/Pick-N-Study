@@ -1,0 +1,108 @@
+body{
+    background-color: #f2f4f7;
+}
+
+.nav-item a{
+    color: #0064fa;
+}
+
+.nav-item a:hover{
+    color:red;
+}
+
+input[type=submit]{
+    border-radius: 25px;
+    border-style: none;
+    background-color: #0064fa;
+    padding: 10px;
+    color: white;
+}
+
+input[type=submit]:hover{
+    background-color:#3573f0;
+}
+
+.table-container{
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bbbdbb;
+    box-shadow: 8px 8px 5px #dbdbdb;
+    text-align: center;
+    padding: 20px;
+}
+
+.table-container-2{
+    margin: auto;
+    margin-top: 50px;
+    width: 60%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bbbdbb;
+    box-shadow: 8px 8px 5px #dbdbdb;
+    text-align: center;
+    padding: 20px;
+}
+
+.btn-edit{
+    background-color: #0064fa;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.btn-delete{
+    background-color: red;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.footer{
+    padding: 20px;
+}
+
+/*admin styling*/
+.prompt-box{
+    background-color: #f2f4f7;
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bbbdbb;
+    border-radius: 25px;
+    text-align: center;
+    padding: 20px;
+}
+
+input[type=text]{
+    border: solid #0064fa;
+    border-width: 1px;
+    padding: 10px;
+    border-radius: 25px;
+    width: 450px;
+}
+
+.btn-submit{
+    width: 450px;
+    border-radius: 25px;
+    border-style: none;
+    background-color: #0064fa;
+    padding: 10px;
+    color: white;
+  }
+
+.product{
+    border: 1px solid #eaeaec;
+    margin: -1px 19px 3px -1px;
+    padding: 10px;
+    text-align: center;
+    background-color: #efefef;
+}
+
+.qty-input{
+
+}
