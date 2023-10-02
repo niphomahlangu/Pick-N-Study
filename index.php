@@ -55,20 +55,20 @@ if(isset($_POST['btn_logout'])){
     </header>
     
     <div class="container" style="width: 65%">
-        <h2>Pick N Study</h2>
+        <h1 class="h1 text-danger">Pick N Study</h1>
         <?php
         $sql = "SELECT * FROM books";
         $result = mysqli_query($conn,$sql);
 
         while($row = mysqli_fetch_assoc($result)){
         ?>
-        <div class="col-md-3">
+        <div class="col-md-4 mx-auto">
             <form action="index.php?action=add&id=<?php echo $row["BookId"]; ?>" method="post">
                 <div class="product">
                     <img src="<?php echo $row["Image"]; ?>" alt="" class="img-responsive">
                     <h5 class="text-info"><?php echo $row["BookName"]; ?></h5>
-                    <h5 class="text-danger"><?php echo $row["Price"]; ?></h5>
-                    <!-- <input type="text" name="quantity" id="" class="qty-input"> -->
+                    <h5 class="text-danger">R <?php echo $row["Price"]; ?></h5>
+                    <input type="text" name="quantity" id="" class="form-control mx-auto"><br>
                     <input type="submit" value="Add to Cart" class="btn btn-success">
                 </div>
             </form>
