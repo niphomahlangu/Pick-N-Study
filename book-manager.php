@@ -3,8 +3,32 @@
 session_start();
 include 'dbConn.php';
 
+//variable declarations
+$output = null;
+
 if(!$_SESSION['email']){
     header('location: adminLogin.php');
+}
+
+if(isset($_POST["btn-add"])){
+    //get user input
+    $bookname = $_POST["bookname"];
+    $category = $_POST["category"];
+    $image = "images//books//coming-soon.png";
+    $price = $_POST["price"];
+
+    //validate user input
+    if($bookname == null || $category == null || $price == null){
+        $output = "<div class='alert alert-danger'>Empty fields not required.</div>";
+    }else{
+        //add data to database
+        $sql = "INSERT INTO books (BookName, Category, Image, Price) VALUES('$bookname','$category','$image','$price')";
+        $result = mysqli_query($conn,$sql);
+        if($result){
+            echo '<script>alert("Book added successfully.")</script>';
+            echo '<script>window.location="book-manager.php"</script>';
+        }
+    }
 }
 
 ?>
@@ -51,11 +75,12 @@ if(!$_SESSION['email']){
 
     <div class="prompt-box">
         <h1>Enter Book Info</h1><br>
+        <?php echo $output; ?>
         <form action="book-manager.php" method="post">
             <input type="text" name="bookname" id="" class="form-control mx-auto" placeholder="Enter book name"><br>
-            <input type="text" name="course" id="" class="form-control mx-auto" placeholder="Enter category"><br>
+            <input type="text" name="category" id="" class="form-control mx-auto" placeholder="Enter category"><br>
             <input type="text" name="price" id="" class="form-control mx-auto" placeholder="Enter book price"><br>
-            <input type="submit" name="btn-add-book" value="Add Book" class="btn-submit"><br>
+            <input type="submit" name="btn-add" value="Add Book" class="btn-submit"><br>
         </form>
     </div>
 

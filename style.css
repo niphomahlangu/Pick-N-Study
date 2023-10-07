@@ -35,5 +35,28 @@ input[type=submit]:hover{
 }
 
 .container{
+    width: 65%;
     text-align: center;
+}
+
+.btn-checkout{
+    background-color: #1fc44b;
+    color: white;
+    padding: 5px;
+    width: 400px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-checkout:hover{
+    background-color: #2cb04f;
+    color: white;
+    padding: 5px;
+    width: 20%;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.footer{
+    padding: 20px;
 }
