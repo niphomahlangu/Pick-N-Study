@@ -28,7 +28,7 @@ $create_tblBooks = mysqli_query($conn,$sql);
 $sql = "CREATE TABLE `orders` (
     `OrderId` int NOT NULL AUTO_INCREMENT,
     `StudentNum` varchar(100) NOT NULL,
-    `Qty` int NOT NULL,
+    `Date` DATE NOT NULL,
     PRIMARY KEY (`OrderId`),
     KEY `StudentNum` (`StudentNum`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci";
@@ -40,6 +40,7 @@ $sql = "CREATE TABLE `orders_books` (
     `Id` int NOT NULL AUTO_INCREMENT,
     `OrderId` int NOT NULL,
     `BookId` int NOT NULL,
+    `Qty` int NOT NULL,
     PRIMARY KEY (`Id`),
     KEY `OrderId` (`OrderId`),
     KEY `BookId` (`BookId`)

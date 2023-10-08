@@ -49,6 +49,7 @@ if(isset($_POST["add"])){
     }
 }
 
+//when user removes an item
 if(isset($_GET["action"])){
     if ($_GET["action"] == "delete"){
         foreach ($_SESSION["cart"] as $keys => $value){

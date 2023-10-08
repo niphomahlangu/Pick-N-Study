@@ -57,6 +57,18 @@ input[type=submit]:hover{
     text-decoration: none;
 }
 
+.table-container{
+    margin: auto;
+    margin-top: 50px;
+    width: 70%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bbbdbb;
+    box-shadow: 8px 8px 5px #dbdbdb;
+    text-align: center;
+    padding: 20px;
+}
+
 .footer{
     padding: 20px;
 }
