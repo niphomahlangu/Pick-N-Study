@@ -21,24 +21,26 @@ if(isset($_POST["btn-order"])){
     mysqli_query($conn, $sql);
 
     //get order Id
-    $sql = "SELECT * FROM orders";
+    $sql = "SELECT * FROM orders ORDER BY OrderId DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $orderId = $row["OrderId"];
 
-    //get quantity
-    $quantity = $_SESSION["cart"]["quantity"];
-    //get book id
-    $bookId = $_SESSION["cart"]["item_id"];
+    foreach($_SESSION["cart"] as $key => $value){
+        $quantity = $value["quantity"];
+        $bookId = $value["item_id"];
 
-    //insert into orders_books
-    $sql = "INSERT INTO orders_books (OrderId, BookId, Qty) VALUES('$orderId','$bookId','$quantity')";
-    $result = mysqli_query($conn, $sql);
+        //insert into orders_books
+        $sql = "INSERT INTO orders_books (OrderId, BookId, Qty) VALUES('$orderId','$bookId','$quantity')";
+        $result = mysqli_query($conn, $sql);
 
-    if($result){
-        echo '<script>alert("Order placed successfully. Thank you for shopping with us.")</script>';
-        echo '<script>window.location="checkout.php"</script>';
+        if($result){
+            echo '<script>alert("Order placed successfully. Thank you for shopping with us.")</script>';
+            echo '<script>window.location="checkout.php"</script>';
+            unset($_SESSION["cart"]);
+        }
     }
+
 }
 ?>
 
@@ -65,10 +67,10 @@ if(isset($_POST["btn-order"])){
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="index.php">Cart</a>
+                        <a class="nav-link" href="">Cart</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="history.php">Shopping History</a>
