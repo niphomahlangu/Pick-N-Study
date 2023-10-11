@@ -104,7 +104,7 @@ if(isset($_GET["action"])){
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <h1 class="h1 text-danger">Welcome to Pick N Study</h1>
         <?php
@@ -156,7 +156,7 @@ if(isset($_GET["action"])){
                         <td><?php echo $value["quantity"]; ?></td>
                         <td>R <?php echo $value["price"]; ?></td>
                         <td>R <?php echo number_format($value["quantity"] * $value["price"], 2); ?></td>
-                        <td><a href="index.php?action=delete&id=<?php echo $value["item_id"]; ?>">Remove Item</a></td>
+                        <td><a href="index.php?action=delete&id=<?php echo $value["item_id"]; ?>" class="link-remove">Remove Item</a></td>
                     </tr>
                     <?php
                     $total = $total + ($value["quantity"] * $value["price"]);

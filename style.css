@@ -70,6 +70,14 @@ body{
     padding: 20px;
 }
 
+.link-remove{
+    color: red;
+    text-decoration: none;
+}
+.link-remove:hover{
+    color: #d42026;
+}
+
 .footer{
     padding: 20px;
 }

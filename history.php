@@ -2,6 +2,10 @@
 session_start();
 include 'dbConn.php';
 
+if(!$_SESSION['email']){
+    header('location: login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +37,7 @@ include 'dbConn.php';
                             </li>
                             <li class="nav-item">
                                 <form method="post" action="index.php" >
-                                    <input type="submit" name="btn_logout" value="LOGOUT">
+                                    <input type="submit" class="btn btn-primary rounded-pill" name="btn_logout" value="LOGOUT">
                                 </form>
                             </li>
                         </ul>

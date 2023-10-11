@@ -82,8 +82,9 @@ if(isset($_POST['btn_logout'])){
                     <td><a href="process.php?remove=<?php echo $row['StudentNum']; ?>" class="btn-delete">Remove</a></td>
                 </tr>
             </tbody>
-                
-            <?php } ?>
+            <?php 
+            } 
+            ?>
         </table>
     </div>
 

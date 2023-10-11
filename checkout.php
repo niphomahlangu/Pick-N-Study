@@ -2,6 +2,10 @@
 session_start();
 include 'dbConn.php';
 
+if(!$_SESSION['email']){
+    header('location: login.php');
+}
+
 //user places order
 if(isset($_POST["btn-order"])){
     //today's date
@@ -76,7 +80,7 @@ if(isset($_POST["btn-order"])){
                         </li>
                         <li class="nav-item">
                             <form method="post" action="index.php" >
-                                <input type="submit" name="btn_logout" value="LOGOUT">
+                                <input type="submit" class="btn btn-primary rounded-pill" name="btn_logout" value="LOGOUT">
                             </form>
                         </li>
                     </ul>
@@ -113,7 +117,7 @@ if(isset($_POST["btn-order"])){
                             <td><?php echo $value["quantity"]; ?></td>
                             <td>R <?php echo $value["price"]; ?></td>
                             <td>R <?php echo number_format($value["quantity"] * $value["price"], 2); ?></td>
-                            <td><a href="checkout.php?action=delete&id=<?php echo $value["item_id"]; ?>">Remove Item</a></td>
+                            <td><a href="checkout.php?action=delete&id=<?php echo $value["item_id"]; ?>" class="link-remove">Remove Item</a></td>
                         </tr>
                         <?php
                         $total = $total + ($value["quantity"] * $value["price"]);
@@ -132,7 +136,7 @@ if(isset($_POST["btn-order"])){
             </div>
             
             <form action="checkout.php" method="post">
-                <input type="submit" name="btn-order" value="Place Order">
+                <input type="submit" class="btn-add" name="btn-order" value="Place Order">
             </form>
         </div>
     </div>
