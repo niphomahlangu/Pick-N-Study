@@ -117,7 +117,7 @@ if(isset($_GET["action"])){
             <form action="index.php?action=add&id=<?php echo $row["BookId"]; ?>" method="post">
                 <div class="product">
                     <img src="<?php echo $row["Image"]; ?>" alt="" class="img-responsive">
-                    <h5 class="text-info"><?php echo $row["BookName"]; ?></h5>
+                    <h5 class="text-primary-emphasis"><?php echo $row["BookName"]; ?></h5>
                     <h5 class="text-danger">R <?php echo $row["Price"]; ?></h5>
                     <input type="text" name="quantity" id="" class="form-control mx-auto" placeholder="Enter Quantity" required><br>
                     <input type="hidden" name="hidden_name" value="<?php echo $row["BookName"]; ?>">
