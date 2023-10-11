@@ -96,7 +96,7 @@ if(isset($_GET["action"])){
                         </li>
                         <li class="nav-item">
                             <form method="post" action="index.php" >
-                                <input type="submit" name="btn_logout" value="LOGOUT">
+                                <input type="submit" class="btn btn-primary rounded-pill" name="btn_logout" value="LOGOUT">
                             </form>
                         </li>
                     </ul>
@@ -119,10 +119,10 @@ if(isset($_GET["action"])){
                     <img src="<?php echo $row["Image"]; ?>" alt="" class="img-responsive">
                     <h5 class="text-primary-emphasis"><?php echo $row["BookName"]; ?></h5>
                     <h5 class="text-danger">R <?php echo $row["Price"]; ?></h5>
-                    <input type="text" name="quantity" id="" class="form-control mx-auto" placeholder="Enter Quantity" required><br>
+                    <input type="number" min="1" max="5" name="quantity" id="" class="form-control mx-auto" placeholder="Enter Quantity" required><br>
                     <input type="hidden" name="hidden_name" value="<?php echo $row["BookName"]; ?>">
                     <input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>">
-                    <input type="submit" name="add" value="Add to Cart" class="btn btn-success">
+                    <input type="submit" name="add" value="Add to Cart" class="btn-add">
                 </div>
             </form>
         </div>

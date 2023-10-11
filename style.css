@@ -10,16 +10,17 @@ body{
     color:red;
 }
 
-input[type=submit]{
-    border-radius: 25px;
-    border-style: none;
-    background-color: #0064fa;
-    padding: 10px;
+.btn-add{
+    background-color: #2fb553;
     color: white;
+    border-style: none;
+    height: 35px;
+    width: 310px;
+    border-radius: 5px;
 }
 
-input[type=submit]:hover{
-    background-color:#3573f0;
+.btn-add:hover{
+    background-color: #27ab4a;
 }
 
 .footer{
