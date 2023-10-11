@@ -38,34 +38,9 @@ if(isset($_POST["btn-order"])){
             echo '<script>alert("Order placed successfully. Thank you for shopping with us.")</script>';
             echo '<script>window.location="checkout.php"</script>';
 
-            //add order info to history
-            addHistory();
             //clear cart
             unset($_SESSION["cart"]);
         }
-    }
-}
-
-function addHistory(){
-    global $conn;
-
-    //join and read data from existing tables
-    $sql = "SELECT Date, orders_books.OrderId, books.BookName, books.Price, Qty FROM orders_books
-    INNER JOIN orders ON orders_books.OrderId = orders.OrderId
-    INNER JOIN books ON orders_books.BookId = books.BookId
-    ORDER BY Date DESC, orders_books.OrderId DESC";
-
-    $result = mysqli_query($conn, $sql);
-    if($row = mysqli_fetch_assoc($result)){
-        $date = $row["Date"];
-        $orderId = $row["OrderId"];
-        $bookName = $row["BookName"];
-        $price = $row["Price"];
-        $quantity = $row["Qty"];
-        $total = $price*$quantity;
-
-        $sql = "INSERT INTO history (Date, OrderId, BookName, Price, Qty, Total) VALUES('$date','$orderId','$bookName','$quantity','$price','$total')";
-        mysqli_query($conn, $sql);
     }
 }
 
@@ -95,9 +70,6 @@ function addHistory(){
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="">Cart</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="history.php">Shopping History</a>

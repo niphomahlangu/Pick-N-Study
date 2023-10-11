@@ -89,10 +89,10 @@ if(isset($_GET["action"])){
                         <a class="nav-link" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Cart</a>
+                        <a class="nav-link" href="index.php#my-cart">Cart</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Shopping History</a>
+                        <a class="nav-link" href="history.php">Shopping History</a>
                         </li>
                         <li class="nav-item">
                             <form method="post" action="index.php" >
@@ -131,7 +131,7 @@ if(isset($_GET["action"])){
         ?>
     </div>
 
-    <div class="container">
+    <div id="my-cart"class="container" name="my-cart">
         <h2 class="h2 text-danger">Shopping Cart</h2>
         
         <div class="table-responsive">

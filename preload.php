@@ -74,21 +74,7 @@ $sql = "CREATE TABLE `users` (
 
 $create_tblUsers = mysqli_query($conn,$sql);
 
-$sql ="CREATE TABLE `history` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `OrderId` int NOT NULL,
-  `Date` DATE NOT NULL,
-  `BookName` varchar(100) NOT NULL,
-  `Qty` int NOT NULL,
-  `Price` int NOT NULL,
-  `Total` int NOT NULL,
-  PRIMARY KEY (`Id`),
-  KEY `AdminId` (`OrderId`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci";
-
-  $create_tblHistory = mysqli_query($conn,$sql);
-
-if($create_tblAdmin && $create_tblBooks && $create_tblOrders && $create_tblOrders_Books && $create_tblUnverified_Users && $create_tblUsers && $create_tblHistory){
+if($create_tblAdmin && $create_tblBooks && $create_tblOrders && $create_tblOrders_Books && $create_tblUnverified_Users && $create_tblUsers){
 
     //alter all tables
     alterTables();
@@ -131,9 +117,6 @@ function alterTables(){
     mysqli_query($conn,$sql);
 
     $sql = "ALTER TABLE `users` ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`AdminId`) REFERENCES `admins` (`AdminId`)";
-    mysqli_query($conn,$sql);
-
-    $sql = "ALTER TABLE `history` ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`OrderId`)";
     mysqli_query($conn,$sql);
 }
 
