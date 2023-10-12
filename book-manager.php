@@ -4,7 +4,8 @@ session_start();
 include 'dbConn.php';
 
 //variable declarations
-$output = null;
+$output = $id = $bookname = $category = $price = null;
+$update = false;
 
 if(!$_SESSION['email']){
     header('location: adminLogin.php');
@@ -31,6 +32,46 @@ if(isset($_POST["btn-add"])){
     }
 }
 
+if(isset($_GET["edit"])){
+    $update = true;
+    //get book id
+    $id = $_GET["edit"];
+    //get selected book
+    $sql = "SELECT * FROM books WHERE BookId='$id'";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $bookname = $row["BookName"];
+    $category = $row["Category"];
+    $price = $row["Price"];
+}
+
+if(isset($_GET["del"])){
+    //get book id
+    $id = $_GET["del"];
+    //delete book
+    $sql = "DELETE FROM books WHERE BookId='$id'";
+    mysqli_query($conn,$sql);
+    echo '<script>alert("Item has been deleted.")</script>';
+    echo '<script>window.location="book-manager.php"</script>';
+}
+
+if(isset($_POST["btn-update"])){
+    //get user input
+    $id = $_POST["id"];
+    $bookname = $_POST["bookname"];
+    $category = $_POST["category"];
+    $price = $_POST["price"];
+    
+    //update book information
+    $sql = "UPDATE books SET BookName='$bookname', Category='$category', Price='$price' WHERE BookId='$id'";
+    $result = mysqli_query($conn,$sql);
+    if($result){
+        echo '<script>alert("Book updated successfully.")</script>';
+        echo '<script>window.location="book-manager.php"</script>';
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,15 +94,13 @@ if(isset($_POST["btn-add"])){
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="admin.php">User Manager</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="book-manager.php">Book Manager</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <form action="admin.php" method="post">
                                 <input type="submit" name="btn_logout" value="LOGOUT">
@@ -77,14 +116,23 @@ if(isset($_POST["btn-add"])){
         <h1>Enter Book Info</h1><br>
         <?php echo $output; ?>
         <form action="book-manager.php" method="post">
-            <input type="text" name="bookname" id="" class="form-control mx-auto" placeholder="Enter book name"><br>
-            <input type="text" name="category" id="" class="form-control mx-auto" placeholder="Enter category"><br>
-            <input type="text" name="price" id="" class="form-control mx-auto" placeholder="Enter book price"><br>
-            <input type="submit" name="btn-add" value="Add Book" class="btn-submit"><br>
+            <?php if ($update == true): ?>
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <input type="text" name="bookname" id="" class="form-control mx-auto" placeholder="Enter book name" value="<?php echo $bookname; ?>"><br>
+                <input type="text" name="category" id="" class="form-control mx-auto" placeholder="Enter category" value="<?php echo $category; ?>"><br>
+                <input type="text" name="price" id="" class="form-control mx-auto" placeholder="Enter book price" value="<?php echo $price; ?>"><br>
+                <input type="submit" name="btn-update" value="Update Book" class="btn-submit"><br>
+            <?php else: ?>
+                <input type="text" name="bookname" id="" class="form-control mx-auto" placeholder="Enter book name"><br>
+                <input type="text" name="category" id="" class="form-control mx-auto" placeholder="Enter category"><br>
+                <input type="text" name="price" id="" class="form-control mx-auto" placeholder="Enter book price"><br>
+                <input type="submit" name="btn-add" value="Add Book" class="btn-submit"><br>
+            <?php endif ?>
         </form>
     </div>
 
     <div class="table-container">
+        <h2>Book Inventory</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -110,7 +158,9 @@ if(isset($_POST["btn-add"])){
                     <td><a href="book-manager.php?del=<?php echo $row["BookId"]; ?>" class="btn-delete">Delete</a></td>
                 </tr>
             </tbody>
-            <?php }?>
+            <?php 
+            }
+            ?>
         </table>
     </div>
 
