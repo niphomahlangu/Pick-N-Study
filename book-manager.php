@@ -49,11 +49,17 @@ if(isset($_GET["edit"])){
 if(isset($_GET["del"])){
     //get book id
     $id = $_GET["del"];
-    //delete book
+
+    //get selected book
     $sql = "DELETE FROM books WHERE BookId='$id'";
-    mysqli_query($conn,$sql);
-    echo '<script>alert("Item has been deleted.")</script>';
-    echo '<script>window.location="book-manager.php"</script>';
+    $result = mysqli_query($conn,$sql);
+    if($result){
+        echo '<script>alert("Item deleted.")</script>';
+        echo '<script>window.location="book-manager.php"</script>';
+    }else{
+        echo '<script>alert("FAILED to delete Item.")</script>';
+        echo '<script>window.location="book-manager.php"</script>';
+    }
 }
 
 if(isset($_POST["btn-update"])){
