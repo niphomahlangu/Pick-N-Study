@@ -2,6 +2,11 @@ body{
     background-color: #f2f4f7;
 }
 
+
+nav{
+    background-color: white;
+}
+
 .nav-item a{
     color: #0064fa;
 }
@@ -36,6 +41,7 @@ body{
 }
 
 .container{
+    margin-top: 80px;
     width: 65%;
     text-align: center;
 }

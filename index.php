@@ -75,7 +75,7 @@ if(isset($_GET["action"])){
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg border-bottom">
+        <nav class="navbar fixed-top navbar-expand-lg border-bottom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">
                 <img src="images/logo/logo" alt="" width="150" height="50">
